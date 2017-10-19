@@ -1,0 +1,821 @@
+{
+	"info": {
+		"name": "Camunda Rest API",
+		"_postman_id": "11c80602-f965-2a40-f2a4-ca62e8f31218",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/deployment",
+			"description": "",
+			"item": [
+				{
+					"name": "/deployment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/deployment",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"deployment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deployment/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/deployment/051e15ae-99b4-11e7-92b2-0242ac110002",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"deployment",
+								"051e15ae-99b4-11e7-92b2-0242ac110002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deployment/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "deployment-name",
+									"value": "PayTaxes",
+									"type": "text"
+								},
+								{
+									"key": "enable-duplicate-filtering",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "deploy-changed-only",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "deployment-source",
+									"value": "local",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "tenant-id",
+									"value": "My Tenant",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "pay_taxes.bpmn",
+									"value": "",
+									"type": "file"
+								},
+								{
+									"key": "smsBody.js",
+									"value": "",
+									"description": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{camunda}}/deployment/create",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"deployment",
+								"create"
+							]
+						},
+						"description": "Create a Camunda Deployment.\n\nUpdate the Deployment Name and Key/Value of the .bpmn file in the Body."
+					},
+					"response": []
+				},
+				{
+					"name": "/process-instance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-instance",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-instance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-instance/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-instance/3fde771b-9aed-11e7-92b2-0242ac110002",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-instance",
+								"3fde771b-9aed-11e7-92b2-0242ac110002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"description": "",
+			"item": [
+				{
+					"name": "/task/{id}/complete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{camunda}}/task/d7e3213e-9686-11e7-b233-0242ac110002/complete",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"task",
+								"d7e3213e-9686-11e7-b233-0242ac110002",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/task/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Review Tax Submission\",\n\t\"assignee\": \"Individual:d0daa7e4-07d1-47e6-93f2-0629adaa3b49\"\n}"
+						},
+						"url": {
+							"raw": "{{camunda}}/task/8f9d8732-968d-11e7-b233-0242ac110002",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"task",
+								"8f9d8732-968d-11e7-b233-0242ac110002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/task/create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"2b18bc01-a02b-4b54-9bff-2259cb421d0f\",\r\n  \"name\": \"Review something!\",\r\n  \"description\": \"This have to be done very urgent\",\r\n  \"priority\" : 30,\r\n  \"assignee\" : \"Staff:47a5a9cb-496f-4db7-8999-489ec404887f\",\r\n  \"owner\" : null,\r\n  \"delegationState\" : \"PENDING\",\r\n  \"due\" : \"2014-08-30T10:00:00\",\r\n  \"followUp\" : \"2014-08-25T10:00:00\",\r\n  \"tenantId\" : null\r\n}"
+						},
+						"url": {
+							"raw": "{{camunda}}/task/create",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"task",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/task/{id}/variables",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/hal+json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/task/3fde9e43-9aed-11e7-92b2-0242ac110002/variables?deserializeValues=false",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"task",
+								"3fde9e43-9aed-11e7-92b2-0242ac110002",
+								"variables"
+							],
+							"query": [
+								{
+									"key": "deserializeValues",
+									"value": "false",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/task/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/hal+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/task/8f9d8732-968d-11e7-b233-0242ac110002",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"task",
+								"8f9d8732-968d-11e7-b233-0242ac110002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"candidateGroup\": \"8454c987-cbc5-4a24-ba1a-d420283caabd\"\n}"
+						},
+						"url": {
+							"raw": "{{camunda}}/task",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/task?",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "candidateGroup",
+									"value": "8454c987-cbc5-4a24-ba1a-d420283caabd",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "includeAssignedTasks",
+									"value": "true",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "involvedUser",
+									"value": "true",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "assignee",
+									"value": "Individual",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "assigneeLike",
+									"value": "Individual%25",
+									"equals": true,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Process Definition",
+			"description": "",
+			"item": [
+				{
+					"name": "/process-definition/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition/PayTaxes:1:608cd76b-9e4e-11e7-b8b7-0242ac110002",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition",
+								"PayTaxes:1:608cd76b-9e4e-11e7-b8b7-0242ac110002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-definition/{id}/xml",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition/PayTaxes:5:05201180-99b4-11e7-92b2-0242ac110002/xml",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition",
+								"PayTaxes:5:05201180-99b4-11e7-92b2-0242ac110002",
+								"xml"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-definition/{id}/statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition/PayTaxes:5:05201180-99b4-11e7-92b2-0242ac110002/statistics",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition",
+								"PayTaxes:5:05201180-99b4-11e7-92b2-0242ac110002",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-definition/key/{key}/xml",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition/key/PayTaxes/xml",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition",
+								"key",
+								"PayTaxes",
+								"xml"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-definition/key/{key}/start",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"variables\": {\r\n\t\t\"invoiceNumber\" : {\"value\" : \"invoice 1\", \"type\": \"string\"},\r\n    \t\"amount\" : {\"value\" : 30, \"type\": \"integer\"},\r\n    \t\"creditor\" : {\"value\" : \"Creditor 1\", \"type\": \"string\"},\r\n    \t\"invoiceCategory\" : {\"value\" : \"Category 1\", \"type\": \"string\"},\r\n    \t\"approverGroups\" : {\"value\" : true, \"type\": \"boolean\"}\r\n    }\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition/key/PayTaxes/start",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition",
+								"key",
+								"PayTaxes",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-definition/{id}/startForm",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition/PayTaxes:5:05201180-99b4-11e7-92b2-0242ac110002/startForm",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition",
+								"PayTaxes:5:05201180-99b4-11e7-92b2-0242ac110002",
+								"startForm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-definition/{id}/diagram",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition/PayTaxes:5:05201180-99b4-11e7-92b2-0242ac110002/diagram",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition",
+								"PayTaxes:5:05201180-99b4-11e7-92b2-0242ac110002",
+								"diagram"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-definition/key/{key}/startForm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition/key/PayTaxes/startForm",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition",
+								"key",
+								"PayTaxes",
+								"startForm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/process-definition",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-definition",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-definition"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Process Instance",
+			"description": "",
+			"item": [
+				{
+					"name": "/process-instance/{id}/variables",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/process-instance/3fde771b-9aed-11e7-92b2-0242ac110002/variables",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"process-instance",
+								"3fde771b-9aed-11e7-92b2-0242ac110002",
+								"variables"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Groups",
+			"description": "",
+			"item": [
+				{
+					"name": "/group/create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\":\"8454c987-cbc5-4a24-ba1a-d420283caabd\",\r\n\t\"name\":\"Public Works\",\r\n\t\"type\":\"Business Unit\"\r\n}"
+						},
+						"url": {
+							"raw": "{{camunda}}/group/create",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"group",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/group/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/group/8454c987-cbc5-4a24-ba1a-d420283caabd",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"group",
+								"8454c987-cbc5-4a24-ba1a-d420283caabd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{camunda}}/group",
+							"host": [
+								"{{camunda}}"
+							],
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
